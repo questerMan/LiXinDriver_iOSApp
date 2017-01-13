@@ -1,0 +1,164 @@
+//
+//  LiXin.pch
+//  DriveriOSApp
+//
+//  Created by lixin on 16/11/26.
+//  Copyright © 2016年 陆遗坤. All rights reserved.
+//
+#ifdef __OBJC__
+
+#ifndef LiXin_pch
+#define LiXin_pch
+
+//1.密钥管理
+#import "KeyManage.h"
+
+//2.适配
+#define MATCHSIZE(px) ([@"iPad" isEqualToString:[[UIDevice currentDevice] model]]? px*(SCREEN_W/750) : (SCREEN_W == 414)? px*414/750.0 : (SCREEN_W == 375)? px*0.5 : px*320/750.0)
+
+//3.屏幕尺寸大小
+#define SCREEN_W [UIScreen mainScreen].bounds.size.width
+#define SCREEN_H [UIScreen mainScreen].bounds.size.height
+
+#define VIEW_W self.view.frame.size.width
+#define VIEW_H self.view.frame.size.height
+
+#define SELF_W self.frame.size.width
+#define SELF_H self.frame.size.height
+
+#define StatusBar_W [[UIApplication sharedApplication] statusBarFrame].size.width
+#define StatusBar_H [[UIApplication sharedApplication] statusBarFrame].size.height
+
+//4、测试输出Log
+#pragma mark - DEBUG
+#ifdef DEBUG
+// 定义是输出Log
+#define DLog(format, ...) NSLog(@"Line[%d] %s " format, __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__)
+#else
+// 定义是输出Log
+#define DLog(format, ...)
+#endif
+// 只输出类名
+#define LogClassName DLog(@"方法类名的输出")
+
+//5、沙盒路径
+#define PATH_OF_APP_HOME    NSHomeDirectory()
+#define PATH_OF_TEMP        NSTemporaryDirectory()
+#define PATH_OF_DOCUMENT    [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+
+//----------------------颜色类---------------------------
+// rgb颜色转换（16进制->10进制）
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+//带有RGBA的颜色设置
+#define COLOR(R, G, B, A) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:A]
+
+//tab背景属性
+#define TAB_NOTSELECT_BG [UIColor blackColor]
+#define TAB_SELECT_BG [UIColor blackColor]
+#define TAB_SELECT_TEXTCOLOR [UIColor orangeColor]
+#define TAB_NOTSELECT_TEXTCOLOR [UIColor whiteColor]
+
+//=======缓存=======
+#define UserDefault [NSUserDefaults  standardUserDefaults]
+//=======默认字体=======
+#define FontDefault [UIFont systemFontOfSize:MATCHSIZE(30)]
+//=======YYCache=======
+#define CACHE_DATA @"CACHEDATA"
+//=======搜索历史记录=======
+#define HISTORYLIST @"historyList"
+//=======实时路况========
+#define Traffic_KEY @"Traffic_KEY"//默认状态 关闭
+//=======声音提示========
+#define Voice_KEY @"Voice_KEY"//默认状态 关闭
+//=======美颜相机========
+#define Beautiful_KEY @"Beautiful_KEY"//默认状态 打开
+//=======缓存头像=======
+#define HeadIMG_KEY @"HeadIMG_KEY"//默认状态 打开
+//=======当前手机号========
+#define PhoneNumber_KEY @"PhoneNumber_KEY"
+//=======测试0 ／ 上线1========
+#define App_Sate 0
+//=======打印信息处理========打印1  弹框2  储存3
+#define App_NSLog 1
+
+
+/*=======================第三方=======================*/
+//Full版本
+#import <Hyphenate_CN/EMSDKFull.h>
+#import "EaseUI.h"
+#import <YYCache/YYCache.h>
+// 高德地图
+#import <MAMapKit/MAMapKit.h>
+#import <AMapFoundationKit/AMapFoundationKit.h>
+#import <AMapSearchKit/AMapSearchKit.h>
+#import <AMapLocationKit/AMapLocationKit.h>
+#import <AMapNaviKit/AMapNaviKit.h>
+
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <Masonry/Masonry.h>
+#import <MBProgressHUD/MBProgressHUD.h>
+#import <FMDB/FMDB.h>
+#import <AFNetworking/AFNetworking.h>
+
+#import "UIScrollView+EmptyDataSet.h"
+
+
+/*=======================本  地=======================*/
+#import "LeftMenuMain.h"
+#import "StarsView.h"
+#import "SlideMenuController.h"
+#import "UIViewController+SlideMenuControllerOC.h"
+
+#import "LeftMenuRoot.h"
+#import "MyMessage.h"
+#import <objc/runtime.h>
+#import "NativeData.h"
+#import "MyIndent.h"
+#import "Notify.h"
+#import "DriverGuide.h"
+#import "LXObjManage.h"
+
+#import "LimitDataClass.h"
+
+#import "Setup.h"
+#import "InstantHeadView.h"
+#import "Indent.h"
+#import "ClientOfReservation.h"
+#import "AMSearch.h"
+#import "AMLocationModel.h"
+#import "Login.h"
+
+#import "AlertView.h"
+#import "UIView+Frame.h"
+#import "VoiceClass.h"
+#import "UIButton+Time.h"
+
+#import "AMPublicTools.h"
+#import "AMMapView.h"
+#import "AMNavigationMap.h"
+
+#import "OfflineDetailViewController.h"
+#import "FactoryClass.h"
+#import "TabClass.h"
+#import "IndentPublicViewTools.h"
+#import "TabModel.h"
+#import "PublicTool.h"
+
+#import "UIControl+BtnOnclickNum.h"
+#import "CacheClass.h"
+#import "UIView+HUD.h"
+#import "UIViewController+HUD.h"
+#import "UsersClass.h"
+#import "NSObject+EasyModel.h"
+//预约单
+#import "ReservationCell.h"
+#import "ReservationModel.h"
+
+
+
+
+
+
+
+#endif /* LiXin_pch */
+#endif
